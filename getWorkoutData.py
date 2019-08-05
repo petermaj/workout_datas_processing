@@ -6,7 +6,8 @@ def getDatas(location, row):
     sheet = wb.sheet_by_index(0)     
     sheet.cell_value(0, 0) 
     
-    print(sheet.row_values(row)) 
+    return (sheet.row_values(row)) 
+
 
 #How to call function:
 #getDatas("workoutdata/Move_2019_07_29_17_38_24_Cycling.xlsx",2)

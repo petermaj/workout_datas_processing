@@ -1,16 +1,21 @@
-# Program to extract a particular row value 
 import xlrd
-
-def getDatas(location, row):    
-    wb = xlrd.open_workbook(location)
-    sheet = wb.sheet_by_index(0)     
+def openWorkbook(location):
+    workbook = xlrd.open_workbook(location)
+    return workbook
+def getDatas(workbook, row):    
+    sheet = workbook.sheet_by_index(0)     
     sheet.cell_value(0, 0) 
-    
     return (sheet.row_values(row)) 
 
+def getRowNumber(workbook, name):     
+    worksheet=workbook.sheet_by_name(name)
+    return worksheet.nrows
 
-#How to call function:
-#getDatas("workoutdata/Move_2019_07_29_17_38_24_Cycling.xlsx",2)
+
+#How to call functions:
+#workbook=openWorkbook("workoutdata/Move_2019_07_29_17_38_24_Cycling.xlsx")
+#getDatas(workbook,2)
+#getRowNumber(workbook,"29 Jul 2019 17_38_24")
 
 
 #Result:

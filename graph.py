@@ -17,6 +17,15 @@ def show_heartrate(_distances, _heartrate):
     plt.plot(_distances, _heartrate)
     plt.show()
 
+datas=data.processing_workout_datas()
+distances=[]
+speeds=[]
+heartrates=[]
+for i in range(len(datas)):
+    distances.append(datas[i].distance/1000)
+    speeds.append(datas[i].speed*(3.6))
+    heartrates.append(datas[i].heartrate)
+
 window=Tk()  
 window.title("Workout Datas")      
 button_speed=Button(window, text="Show speed datas", command=lambda:show_speed(distances, speeds))

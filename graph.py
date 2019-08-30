@@ -17,23 +17,27 @@ def show_heartrate(_distances, _heartrate):
     plt.plot(_distances, _heartrate)
     plt.show()
 
-datas=data.processing_workout_datas()
-distances=[]
-speeds=[]
-heartrates=[]
-for i in range(len(datas)):
-    distances.append(datas[i].distance/1000)
-    speeds.append(datas[i].speed*(3.6))
-    heartrates.append(datas[i].heartrate)
+def window(distances, speeds, heartrates):
+    window=Tk()  
+    window.title("Workout Datas")      
+    button_speed=Button(window, text="Show speed datas", command=lambda:show_speed(distances, speeds))
+    button_heartrate=Button(window, text="Show heartrate datas", command=lambda:show_heartrate(distances, heartrates))
+    button_speed.grid(row=0, column=0)
+    button_heartrate.grid(row=1, column=0)
+    canvas=Canvas(window, width=360, height=360, bg='white')
+    canvas.grid(row=0, rowspan=4, column=1)
+    window.mainloop()
 
-window=Tk()  
-window.title("Workout Datas")      
-button_speed=Button(window, text="Show speed datas", command=lambda:show_speed(distances, speeds))
-button_heartrate=Button(window, text="Show heartrate datas", command=lambda:show_heartrate(distances, heartrates))
-button_speed.grid(row=0, column=0)
-button_heartrate.grid(row=1, column=0)
-canvas=Canvas(window, width=360, height=360, bg='white')
-canvas.grid(row=0, rowspan=4, column=1)
-window.mainloop()
+def main():
+    datas=data.processing_workout_datas()
+    distances=[]
+    speeds=[]
+    heartrates=[]
+    for i in range(len(datas)):
+        distances.append(datas[i].distance/1000)
+        speeds.append(datas[i].speed*(3.6))
+        heartrates.append(datas[i].heartrate)
+    window(distances, speeds, heartrates)
 
+main()
 

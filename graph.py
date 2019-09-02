@@ -31,7 +31,7 @@ def window(distances, speeds, heartrates):
 
 def selectfile():
     root = Tk()
-    root.filename =  filedialog.askopenfilename(initialdir = "/home/peter/fejleszt/python/workoutdataprocessing/workoutdata",title = "Select file",filetypes = (("xlsx files","*.xlsx"),("all files","*.*")))
+    root.filename =  filedialog.askopenfilename(initialdir = "../workoutdataprocessing/workoutdata",title = "Select file",filetypes = (("xlsx files","*.xlsx"),("all files","*.*")))
     root.destroy()
     return (root.filename)
 

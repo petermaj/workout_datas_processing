@@ -1,4 +1,5 @@
-from tkinter import *    
+from tkinter import *  
+from tkinter import filedialog  
 import processing_workout_datas as data
 import matplotlib.pyplot as plt
 
@@ -28,7 +29,14 @@ def window(distances, speeds, heartrates):
     canvas.grid(row=0, rowspan=4, column=1)
     window.mainloop()
 
+def selectfile():
+    root = Tk()
+    root.filename =  filedialog.askopenfilename(initialdir = "/home/peter/fejleszt/python/workoutdataprocessing/workoutdata",title = "Select file",filetypes = (("xlsx files","*.xlsx"),("all files","*.*")))
+    root.destroy()
+    return (root.filename)
+
 def main():
+    selectfile()
     datas=data.processing_workout_datas()
     distances=[]
     speeds=[]

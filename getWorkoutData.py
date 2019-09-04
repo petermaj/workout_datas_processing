@@ -11,6 +11,12 @@ def getRowNumber(workbook, name):
     worksheet=workbook.sheet_by_name(name)
     return worksheet.nrows
 
+def getworksheetnames(location):
+    workbook=xlrd.open_workbook(location)
+    sheetnames=workbook.sheet_names()
+    return sheetnames
+
+
 
 #How to call functions:
 #workbook=openWorkbook("workoutdata/Move_2019_07_29_17_38_24_Cycling.xlsx")
